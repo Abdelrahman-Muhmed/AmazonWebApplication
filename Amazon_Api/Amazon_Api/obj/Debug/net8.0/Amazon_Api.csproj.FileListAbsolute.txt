@@ -24,3 +24,10 @@ C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\Amazon_Api.pdb
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\Amazon_Api.genruntimeconfig.cache
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\ref\Amazon_Api.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\Amazon_Api.csproj.AssemblyReference.cache
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\Amazon_Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\obj\Debug\net8.0\Amazon_Api.csproj.Up2Date
