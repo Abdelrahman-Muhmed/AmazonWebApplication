@@ -63,7 +63,11 @@ catch (Exception ex)
 {
     var logger = loggerFactory.CreateLogger<Program>();
 
+<<<<<<< HEAD
     logger.LogError(ex, "An error happened When during migration");
+=======
+    logger.LogError(ex, "An error happened during migration");
+>>>>>>> 0173e1400cf8cf99be3a34875c52a7c6779176e5
 }
 
 #endregion

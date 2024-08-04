@@ -1,0 +1,16 @@
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\bin\Debug\net8.0\Amazon_EF.deps.json
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\bin\Debug\net8.0\Amazon_EF.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\bin\Debug\net8.0\Amazon_EF.pdb
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\bin\Debug\net8.0\Amazon_Core.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\bin\Debug\net8.0\Amazon_Core.pdb
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.csproj.AssemblyReference.cache
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.AssemblyInfoInputs.cache
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.AssemblyInfo.cs
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.csproj.CoreCompileInputs.cache
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.sourcelink.json
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.csproj.Up2Date
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\refint\Amazon_EF.dll
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\Amazon_EF.pdb
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_EF\obj\Debug\net8.0\ref\Amazon_EF.dll
