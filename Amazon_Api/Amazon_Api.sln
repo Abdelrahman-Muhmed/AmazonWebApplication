@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon_Api", "Amazon_Api\Amazon_Api.csproj", "{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon_Api", "Amazon_Api\Amazon_Api.csproj", "{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon_Core", "Amazon_Core\Amazon_Core.csproj", "{5752890B-2FCD-4F72-95EA-FB250FE46E2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amazon_EF", "Amazon_EF\Amazon_EF.csproj", "{510E9493-F830-4FD6-854B-C1DA88FD66C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amazon_Service", "Amazon_Service\Amazon_Service.csproj", "{53806FC7-6CC0-4D9E-BEB5-E111105E2F36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5752890B-2FCD-4F72-95EA-FB250FE46E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5752890B-2FCD-4F72-95EA-FB250FE46E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5752890B-2FCD-4F72-95EA-FB250FE46E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5752890B-2FCD-4F72-95EA-FB250FE46E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{510E9493-F830-4FD6-854B-C1DA88FD66C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{510E9493-F830-4FD6-854B-C1DA88FD66C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{510E9493-F830-4FD6-854B-C1DA88FD66C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{510E9493-F830-4FD6-854B-C1DA88FD66C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53806FC7-6CC0-4D9E-BEB5-E111105E2F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53806FC7-6CC0-4D9E-BEB5-E111105E2F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53806FC7-6CC0-4D9E-BEB5-E111105E2F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53806FC7-6CC0-4D9E-BEB5-E111105E2F36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

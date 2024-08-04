@@ -1,0 +1,27 @@
+<div class="container mt-5" *ngFor="let card of cards; let i = index">
+  <div class="cards bg-light p-4 row" style="width: 400px;">
+    <div>
+      <h3>{{card.headerName}}</h3>
+    </div>
+    <div class="gaming-card col-lg-6 col-md-4 col-sm-6 mb-4">
+      <div class="car-contain" *ngIf="cards.length > 0 ;else temp">
+        <div class="headsets">
+          <!-- Property Binding ==> For Attribute -->
+          <!-- <img height="70px" [src]="src" alt=""> -->
+          <img [src]="card.items.src" height="90px" alt="">
+          <!-- Interpolation Binding ==> For Html Elemnt -->
+          <p class="">{{card.items[i].name}}</p>
+        </div>
+      </div>
+    </div>
+    <span>
+      <a href="#">See More</a>
+    </span>
+  </div>
+</div>
+
+
+
+<ng-template #temp>
+  <div>Cards Not Found</div>
+</ng-template>
