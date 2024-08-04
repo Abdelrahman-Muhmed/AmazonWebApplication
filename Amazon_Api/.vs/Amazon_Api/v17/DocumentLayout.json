@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}|Amazon_Api\\Amazon_Api.csproj|c:\\users\\bodi\\desktop\\amazon-project\\amazonwebapplication\\amazon_api\\amazon_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}|Amazon_Api\\Amazon_Api.csproj|solutionrelative:amazon_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}|Amazon_Api\\Amazon_Api.csproj|c:\\users\\bodi\\desktop\\amazon-project\\amazonwebapplication\\amazon_api\\amazon_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6ED00A01-66A0-4720-ACDF-5F1C732FE3FE}|Amazon_Api\\Amazon_Api.csproj|solutionrelative:amazon_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{510E9493-F830-4FD6-854B-C1DA88FD66C4}|Amazon_EF\\Amazon_EF.csproj|c:\\users\\bodi\\desktop\\amazon-project\\amazonwebapplication\\amazon_api\\amazon_ef\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510E9493-F830-4FD6-854B-C1DA88FD66C4}|Amazon_EF\\Amazon_EF.csproj|solutionrelative:amazon_ef\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,37 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\Program.cs",
-              "RelativeDocumentMoniker": "Amazon_Api\\Program.cs",
-              "ToolTip": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\Program.cs",
-              "RelativeToolTip": "Amazon_Api\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T07:36:08.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Amazon_Api\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Amazon_Api\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-19T21:30:33.994Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_EF\\Repository\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Amazon_EF\\Repository\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_EF\\Repository\\GenericRepository.cs",
+              "RelativeToolTip": "Amazon_EF\\Repository\\GenericRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T15:59:45.732Z",
+              "EditorCaption": ""
             }
           ]
         }
