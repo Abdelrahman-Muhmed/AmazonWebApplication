@@ -416,3 +416,11 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 
+Amazon_Api/Amazon_Api/obj/Debug/net8.0/Amazon_Api.AssemblyInfo.cs
+Amazon_Api/Amazon_Api/obj/Debug/net8.0/Amazon_Api.AssemblyInfo.cs
+Amazon_Api/Amazon_Api/obj/Debug/net8.0/Amazon_Api.AssemblyInfo.cs
+Amazon_Api/Amazon_Api/obj/Debug/net8.0/Amazon_Api.AssemblyInfoInputs.cache
+Amazon_Api/Amazon_Api/obj/Debug/net8.0/Amazon_Api.csproj.AssemblyReference.cache
+Amazon_Api/Amazon_EF/obj/Debug/net8.0/Amazon_EF.AssemblyInfo.cs
+Amazon_Api/Amazon_EF/obj/Debug/net8.0/Amazon_EF.AssemblyInfoInputs.cache
+Amazon_Api/Amazon_EF/obj/Debug/net8.0/Amazon_EF.csproj.AssemblyReference.cache
