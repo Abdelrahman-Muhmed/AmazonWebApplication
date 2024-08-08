@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Amazon_Api.props" />
-</Project>
