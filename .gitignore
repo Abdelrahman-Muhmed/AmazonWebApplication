@@ -399,5 +399,20 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+# Ignore build directories
+/bin/
+/obj/
+
+# Ignore DLLs
+*.dll
+
+# Ignore executables
+*.exe
+
+# Ignore other common build artifacts
+*.pdb
+*.cache
+*.log
+
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 
