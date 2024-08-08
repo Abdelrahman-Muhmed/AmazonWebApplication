@@ -2,32 +2,40 @@
 using Amazon_Core.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Amazon_Core.Specifications.ProductSpec;
+using AutoMapper;
+using Amazon_Api.Dtos;
 namespace Amazon_Api.Controllers
 {
    
     public class ProductsController : BaseApiController
     {
         private readonly IGenericRepository<Product> _Products;
-        public ProductsController(IGenericRepository<Product> Products)
+        private readonly IMapper _mapper;
+        public ProductsController(IGenericRepository<Product> Products , IMapper mapper)
         {
-            _Products = Products;   
+            _Products = Products;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<ProductRetuenDto>>> GetAllAsync()
         {
-            var products = await _Products.GetAllAsync();
-            return Ok(products);
+            var ProductsBySpec = new ProductWithPrandAndCategory();
+            var products = await _Products.GetAllAsyncWithSpec(ProductsBySpec);
+            var ProductMapp = _mapper.Map<IEnumerable<Product>,IEnumerable<ProductRetuenDto>>(products);
+            return Ok(ProductMapp);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProductAsync(int id)
+        public async Task<ActionResult<ProductRetuenDto>> GetProductAsync(int id)
         {
-            var product = await _Products.GetAsync(id);
+            var ProductsBySpec = new ProductWithPrandAndCategory(id);
+            var product = await _Products.GetAsyncWithSpec(ProductsBySpec);
             if (product == null)
                 return NotFound();
-            return Ok(product);
+            var ProductMapp = _mapper.Map<Product, ProductRetuenDto>(product);
+            return Ok(ProductMapp);
 
         }
     

@@ -5,6 +5,9 @@ using Amazon_EF.Data;
 using Amazon_Core.IRepository;
 using Amazon_Core.Model;
 using Amazon_EF.Repository;
+using Amazon_Api.Helpers;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Config Services          
@@ -32,7 +35,18 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 #endregion
 
+#region Auto Mapping 
+//builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile()));
+//builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+// Register AutoMapper and PictureUrlResolver
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddSingleton<PictureUrlResolver>(); // ???????????????
+#endregion
+
+
 var app = builder.Build();
+
 
 #region For Update Database When I Build Project   
 //Ask CLR For Creating Object From DBContext 
@@ -63,11 +77,9 @@ catch (Exception ex)
 {
     var logger = loggerFactory.CreateLogger<Program>();
 
-<<<<<<< HEAD
+
     logger.LogError(ex, "An error happened When during migration");
-=======
-    logger.LogError(ex, "An error happened during migration");
->>>>>>> 0173e1400cf8cf99be3a34875c52a7c6779176e5
+
 }
 
 #endregion
@@ -75,6 +87,16 @@ catch (Exception ex)
 
 
 // Configure the HTTP request pipeline.
+#region Configure Kestral MeddleWare 
+
+#region Handle Not Found End Point Error  
+//app.UseStatusCodePagesWithRedirects("/ErrorEndPoint/{0}");
+app.UseStatusCodePagesWithReExecute("/ErrorEndPoint/{0}"); // It's Not Make Redirct For Page 
+
+#endregion
+// Add Static For Picture 
+app.UseStaticFiles();
+
 
 app.UseHttpsRedirection();
 
@@ -85,5 +107,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amazon V1");
-});
+}); 
+#endregion
+
 app.Run();
