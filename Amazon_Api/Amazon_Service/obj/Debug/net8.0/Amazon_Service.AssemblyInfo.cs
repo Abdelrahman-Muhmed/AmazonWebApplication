@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Amazon_Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df66036dc0a2635b37acfd3805712df3be0cfff8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46d36d5c1da44a642d24d5e8ea8401f4d7937f25")]
 [assembly: System.Reflection.AssemblyProductAttribute("Amazon_Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Amazon_Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

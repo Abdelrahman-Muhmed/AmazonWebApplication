@@ -1,0 +1,93 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\blueberry-cheesecake.png",
+      "PackagePath": "staticwebassets\\images\\products\\blueberry-cheesecake.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\double-caramel-frappuccino.png",
+      "PackagePath": "staticwebassets\\images\\products\\double-caramel-frappuccino.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\double-smoked-bacon-cheddar-and-egg-sandwich.png",
+      "PackagePath": "staticwebassets\\images\\products\\double-smoked-bacon-cheddar-and-egg-sandwich.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\dragon-drink-starbucks-refreshers-beverage-with-oleato-golden-foam.png",
+      "PackagePath": "staticwebassets\\images\\products\\dragon-drink-starbucks-refreshers-beverage-with-oleato-golden-foam.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\glazed-donuts.png",
+      "PackagePath": "staticwebassets\\images\\products\\glazed-donuts.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\greek-salad.png",
+      "PackagePath": "staticwebassets\\images\\products\\greek-salad.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\honey-cake.png",
+      "PackagePath": "staticwebassets\\images\\products\\honey-cake.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\hot-caramel-macchiato.png",
+      "PackagePath": "staticwebassets\\images\\products\\hot-caramel-macchiato.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-black-tea-lemonade.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-black-tea-lemonade.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-cafe-latte.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-cafe-latte.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-caramel-macchiato.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-caramel-macchiato.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-chai-tea-latte-with-oleato-golden-foam.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-chai-tea-latte-with-oleato-golden-foam.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-london-fog-tea-latte.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-london-fog-tea-latte.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-matcha-latte.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-matcha-latte.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\iced-matcha.png",
+      "PackagePath": "staticwebassets\\images\\products\\iced-matcha.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\turkey-bacon-cheddar-and-egg-white-sandwich.png",
+      "PackagePath": "staticwebassets\\images\\products\\turkey-bacon-cheddar-and-egg-white-sandwich.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\white-chocolate-mocha-frappuccino.png",
+      "PackagePath": "staticwebassets\\images\\products\\white-chocolate-mocha-frappuccino.png"
+    },
+    {
+      "Id": "C:\\Users\\Bodi\\Desktop\\Amazon-Project\\AmazonWebApplication\\Amazon_Api\\Amazon_Api\\wwwroot\\images\\products\\white-chocolate-mocha.png",
+      "PackagePath": "staticwebassets\\images\\products\\white-chocolate-mocha.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Amazon_Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Amazon_Api.props",
+      "PackagePath": "build\\Amazon_Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Amazon_Api.props",
+      "PackagePath": "buildMultiTargeting\\Amazon_Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Amazon_Api.props",
+      "PackagePath": "buildTransitive\\Amazon_Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

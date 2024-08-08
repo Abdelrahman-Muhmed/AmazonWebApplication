@@ -146,3 +146,5 @@ C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Amazon_EF.dll
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Amazon_EF.pdb
 C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Amazon_Core.pdb
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\Amazon_Api.staticwebassets.runtime.json
+C:\Users\Bodi\Desktop\Amazon-Project\AmazonWebApplication\Amazon_Api\Amazon_Api\bin\Debug\net8.0\AutoMapper.dll
