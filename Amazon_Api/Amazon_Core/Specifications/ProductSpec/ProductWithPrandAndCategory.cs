@@ -18,6 +18,17 @@ namespace Amazon_Core.Specifications.ProductSpec
             if(!string.IsNullOrEmpty(sorting))
             {
                 switch(sorting)
+                {
+                    case "PricAse":
+                        //orderBy = p => p.Price;
+                        AddOrderBy(p => p.Price);
+                        break;
+                    case "PricDes":
+                        //orderByDes = p => p.Price;
+                        AddOrderByDes(p => p.Price);
+                        break;
+                    default:
+                        orderBy = p => p.Name;
                         break;
         
                 }
