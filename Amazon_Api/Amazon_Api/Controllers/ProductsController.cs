@@ -26,9 +26,11 @@ namespace Amazon_Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductRetuenDto>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<ProductRetuenDto>>> GetAllAsync(string sorting)
         {
-            var ProductsBySpec = new ProductWithPrandAndCategory();
+            //Sorting Start By Path Parameter To ProductWithPrandAndCategory to make Functionalty 
+       
+            var ProductsBySpec = new ProductWithPrandAndCategory(sorting);
             var products = await _Products.GetAllAsyncWithSpec(ProductsBySpec);
             var ProductMapp = _mapper.Map<IEnumerable<Product>,IEnumerable<ProductRetuenDto>>(products);
             return Ok(ProductMapp);

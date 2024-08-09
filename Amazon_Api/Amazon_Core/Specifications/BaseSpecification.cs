@@ -12,6 +12,8 @@ namespace Amazon_Core.Specifications
     {
         public Expression<Func<T, bool>>? Criteria { get; set; } = null;
         public List<Expression<Func<T, object>>> Include { get; set; } = new List<Expression<Func<T, object>>>();
+        public Expression<Func<T, object>> orderBy { get; set; } = null;
+        public Expression<Func<T, object>> orderByDes { get; set; } = null;
 
         public BaseSpecification()
         {
@@ -22,9 +24,22 @@ namespace Amazon_Core.Specifications
             //Get The Search Value 
             Criteria = CriteriaExpression;
        
-
         }
+
+        //Add Tow Method For Sorting Functionalty 
+
+        public void AddOrderBy(Expression<Func<T, object>> orderByEx)
+        {
+            orderBy = orderByEx;
+        }
+
+        public void AddOrderByDes(Expression<Func<T, object>> orderByDesEx)
+        {
+            orderByDes = orderByDesEx;
+        }
+
+
     }
 
-   
+
 }

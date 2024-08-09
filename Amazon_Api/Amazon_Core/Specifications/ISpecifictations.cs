@@ -12,5 +12,11 @@ namespace Amazon_Core.Specifications
     {
         public Expression<Func<T , bool>>? Criteria { get; set; }  //p => p
         public  List<Expression<Func<T , object>>> Include { get; set; }
+
+        //Add Tow Prop Signture  For Sorting 
+        public Expression<Func<T, object>> orderBy { get; set; }
+        public Expression<Func<T, object>> orderByDes { get; set; }
+
+
     }
 }
