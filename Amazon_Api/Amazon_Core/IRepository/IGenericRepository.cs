@@ -10,11 +10,18 @@ namespace Amazon_Core.IRepository
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-        Task<T?> GetAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
+        public int? Take { get; set; }
+        public int? Skipe { get; set; }
+        public bool isPaginationEnable { get; set; }
 
-        Task<IEnumerable<T>> GetAllAsyncWithSpec(ISpecifictations<T> Spec);
+        Task<T?> GetAsync(int id);
+        Task<IReadOnlyList<T>> GetAllAsync();
+
+        Task<IReadOnlyList<T>> GetAllAsyncWithSpec(ISpecifictations<T> Spec);
 
         Task<T?> GetAsyncWithSpec(ISpecifictations<T> Spec);
+
+        Task<int> GetCountAsync(ISpecifictations<T> Spec);
+
     }
 }

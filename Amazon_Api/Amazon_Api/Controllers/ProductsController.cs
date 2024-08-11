@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Amazon_Core.Specifications.ProductSpec;
 using AutoMapper;
 using Amazon_Api.Dtos;
+using Amazon_Api.Helpers;
 namespace Amazon_Api.Controllers
 {
    
@@ -26,14 +27,19 @@ namespace Amazon_Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductRetuenDto>>> GetAllAsync(string sorting)
+        //Error 415 is becuse the parameter coming from empty body when using propert parameter from object 
+        public async Task<ActionResult<Pagination<ProductRetuenDto>>> GetAllAsync([FromQuery] ProductSpecParameter specParameter)
         {
             //Sorting Start By Path Parameter To ProductWithPrandAndCategory to make Functionalty 
-       
-            var ProductsBySpec = new ProductWithPrandAndCategory(sorting);
+           
+            var ProductsBySpec = new ProductWithPrandAndCategory(specParameter);
             var products = await _Products.GetAllAsyncWithSpec(ProductsBySpec);
-            var ProductMapp = _mapper.Map<IEnumerable<Product>,IEnumerable<ProductRetuenDto>>(products);
-            return Ok(ProductMapp);
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductRetuenDto>>(products);
+            //I have here send ProductsBySpec but i dont nedd all this i just need critaria What return ==> Create New Class 
+            var coundData = new ProductsWithFiltrationForCountSpec(specParameter);
+            var count = await _Products.GetCountAsync(coundData);
+            //I will return the Paginations contain List Of(T) From Data 
+            return Ok(new Pagination<ProductRetuenDto>(specParameter.PageSize , specParameter.PageIndex , data ,count));
         }
 
         [HttpGet("{id}")]

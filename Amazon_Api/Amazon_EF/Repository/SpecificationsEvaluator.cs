@@ -20,11 +20,13 @@ namespace Amazon_EF.Repository
             if (specifictations.orderBy != null) // p => p.Price
                 query = query.OrderBy(specifictations.orderBy);
 
-            if (specifictations.orderByDes != null) //p => p.Price
+           else if (specifictations.orderByDes != null) //p => p.Price
                 query = query.OrderByDescending(specifictations.orderByDes);
 
-           
-            query = specifictations.Include.Aggregate(query, (CurrentQuery, QueryExpression) => CurrentQuery.Include(QueryExpression));
+            if (specifictations.isPaginationEnable == true)
+                query = query.Skip(specifictations.Skipe).Take(specifictations.Take);
+
+              query = specifictations.Include.Aggregate(query, (CurrentQuery, QueryExpression) => CurrentQuery.Include(QueryExpression));
             //CurrentQuery ==> query 
             //QueryExpression ==> (p => p== ??)
             return query;

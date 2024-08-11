@@ -9,15 +9,27 @@ namespace Amazon_Core.Specifications.ProductSpec
 {
     public class ProductWithPrandAndCategory : BaseSpecification<Product>
     {
-        public ProductWithPrandAndCategory(string sorting) : base()
+        public ProductWithPrandAndCategory(ProductSpecParameter specParameter)
+            : base(
+                  p  => 
+                  
+                  (!specParameter.brandId.HasValue || p.BrandId == specParameter.brandId.Value) && 
+                  (!specParameter.categoryId.HasValue || p.CategoryId == specParameter.categoryId.Value)
+                  
+                  )
+
         {
+
+            //The Pagination Work by Take And Skipe  ==> iGenricInterface 
+
+
             Include.Add(p => p.ProductBrand);
             Include.Add(p => p.CategoryName);
 
             //Check on the sorting if null or not 
-            if(!string.IsNullOrEmpty(sorting))
+            if(!string.IsNullOrEmpty(specParameter.sorting))
             {
-                switch(sorting)
+                switch(specParameter.sorting)
                 {
                     case "PricAse":
                         //orderBy = p => p.Price;
@@ -33,6 +45,20 @@ namespace Amazon_Core.Specifications.ProductSpec
         
                 }
             }
+            else
+            {
+                AddOrderBy(p => p.Name);
+            }
+
+
+            /*
+             -totalProducts = 18 ~ 20
+             -PageSize = 5 
+             -PageIndex = 4
+             
+             */
+            //Handle Paination 
+            ApplyPagination((specParameter.PageIndex - 1) * specParameter.PageSize, specParameter.PageSize);
                
         }
 
@@ -41,5 +67,8 @@ namespace Amazon_Core.Specifications.ProductSpec
             Include.Add(p => p.ProductBrand);
             Include.Add(p => p.CategoryName);
         }
+
+
+        
     }
 }

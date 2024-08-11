@@ -18,5 +18,10 @@ namespace Amazon_Core.Specifications
         public Expression<Func<T, object>> orderByDes { get; set; }
 
 
+        //Here i will add this properity(prop Signture) to handle pagination 
+        public int Take { get; set; }
+        public int Skipe { get; set; }
+        public bool isPaginationEnable { get; set; }
+
     }
 }

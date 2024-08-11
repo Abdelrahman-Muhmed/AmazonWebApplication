@@ -17,12 +17,18 @@ namespace Amazon_EF.Repository
     {
         private readonly StoreContext _dbContext;
         private readonly IMapper _mapper;
+
+        //Pagination Implemnt(Automatic Prop)
+        public int? Take { get; set; }
+        public int? Skipe { get; set; }
+        public bool isPaginationEnable { get; set; }
+
         public GenericRepository(StoreContext dbContext , IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             //For Include Category and Product Name <===
             //if (typeof(T) == typeof(Product))
@@ -39,7 +45,7 @@ namespace Amazon_EF.Repository
 
 
 
-        public async Task<IEnumerable<T>> GetAllAsyncWithSpec(ISpecifictations<T> Spec)
+        public async Task<IReadOnlyList<T>> GetAllAsyncWithSpec(ISpecifictations<T> Spec)
         {
             return await GetSpecQuery(Spec).AsNoTracking().ToListAsync();
         }
@@ -53,5 +59,12 @@ namespace Amazon_EF.Repository
         {
             return SpecificationsEvaluator<T>.getQuery(_dbContext.Set<T>(), Spec);
         }
+
+
+        public async Task<int> GetCountAsync(ISpecifictations<T> Spec)
+        {
+            return await GetSpecQuery(Spec).CountAsync();
+        }
+      
     }
 }
