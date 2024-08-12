@@ -13,7 +13,7 @@ namespace Amazon_Core.Specifications.ProductSpec
 
           : base(
                 p =>
-                (!string.IsNullOrEmpty(specParameter.Search) || p.Name.ToLower().Contains(specParameter.Search.ToLower())) &&
+                (string.IsNullOrEmpty(specParameter.Search) || p.Name.ToLower().Contains(specParameter.Search.ToLower())) &&
                 (!specParameter.brandId.HasValue || p.BrandId == specParameter.brandId.Value) &&
                 (!specParameter.categoryId.HasValue || p.CategoryId == specParameter.categoryId.Value)
 

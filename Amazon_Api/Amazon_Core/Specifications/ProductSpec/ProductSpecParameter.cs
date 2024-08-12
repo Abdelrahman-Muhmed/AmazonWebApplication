@@ -13,7 +13,7 @@ namespace Amazon_Core.Specifications.ProductSpec
         public string? sorting { get; set; }
         public int? brandId { get; set; }
         public int? categoryId { get; set; }
-        public string Search { get; set; }
+        public string? Search { get; set; }
 
         public int PageIndex { get; set; } = 1;
 
