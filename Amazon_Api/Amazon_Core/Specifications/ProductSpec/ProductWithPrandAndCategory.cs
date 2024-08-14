@@ -20,7 +20,6 @@ namespace Amazon_Core.Specifications.ProductSpec
                   )
 
         {
-
             //The Pagination Work by Take And Skipe  ==> iGenricInterface 
 
 

@@ -1,5 +1,5 @@
 ﻿using Amazon_Core.Model;
-using Amazon_EF.Data.Config;
+using Amazon_EF.SqlRepository.Data.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,19 +8,19 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.Data
+namespace Amazon_EF.SqlRepository.Data
 {
     public class StoreContext : DbContext
     {
         public StoreContext(DbContextOptions<StoreContext> options)
-            :base(options)
+            : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           // modelBuilder.ApplyConfiguration(new ProductConfigurations());
+            // modelBuilder.ApplyConfiguration(new ProductConfigurations());
             /// Etc >>>>>>>> But there Are other Way 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); // Based on Reflaction 
 

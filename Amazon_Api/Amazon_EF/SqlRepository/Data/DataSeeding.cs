@@ -6,9 +6,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.Data
+namespace Amazon_EF.SqlRepository.Data
 {
-    public  static class DataSeeding
+    public static class DataSeeding
     {
         public async static Task seedAsync(StoreContext dbContext)
         {
@@ -38,7 +38,7 @@ namespace Amazon_EF.Data
             {
                 if (CategoryData?.Count() > 0)
                 {
-                    foreach (var category in CategoryData) 
+                    foreach (var category in CategoryData)
                     {
                         dbContext.Set<ProductCategory>().Add(category);
 

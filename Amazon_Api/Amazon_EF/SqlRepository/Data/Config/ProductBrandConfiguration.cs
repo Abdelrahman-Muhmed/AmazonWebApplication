@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.Data.Config
+namespace Amazon_EF.SqlRepository.Data.Config
 {
-    internal class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCategory>
+    internal class ProductBrandConfiguration : IEntityTypeConfiguration<ProductBrand>
     {
-        public void Configure(EntityTypeBuilder<ProductCategory> builder)
+        public void Configure(EntityTypeBuilder<ProductBrand> builder)
         {
             builder.Property(p => p.Name)
                 .IsRequired();
+
+
         }
     }
 }

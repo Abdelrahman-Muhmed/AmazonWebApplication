@@ -1,11 +1,12 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using Amazon_EF.Data;
 using Amazon_Core.IRepository;
 using Amazon_Core.Model;
-using Amazon_EF.Repository;
 using Amazon_Api.Helpers;
+using Amazon_EF.SqlRepository.Data;
+using Amazon_EF.SqlRepository.Repository;
+using StackExchange.Redis;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,15 @@ builder.Services.AddDbContext<StoreContext>(options =>
 
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
+{
+    var connection = builder.Configuration.GetConnectionString("RedisConnection");
+    return ConnectionMultiplexer.Connect(connection);
+}
+
+);
+
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
 #endregion
 

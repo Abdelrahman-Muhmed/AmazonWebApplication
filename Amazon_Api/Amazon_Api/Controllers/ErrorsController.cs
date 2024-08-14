@@ -1,11 +1,11 @@
 ﻿using Amazon_Api.Error;
-using Amazon_EF.Data;
+using Amazon_EF.SqlRepository.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Amazon_Api.Controllers
 {
-   
+
     public class ErrorsController : BaseApiController
     {
         private readonly StoreContext _dbContext;

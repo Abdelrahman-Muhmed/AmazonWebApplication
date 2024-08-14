@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Amazon_Core.IRepository;
 using Amazon_Core.Model;
 using Amazon_Core.Specifications;
-using Amazon_EF.Data;
+using Amazon_EF.SqlRepository.Data;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Amazon_EF.Repository
+namespace Amazon_EF.SqlRepository.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
@@ -23,7 +23,7 @@ namespace Amazon_EF.Repository
         public int? Skipe { get; set; }
         public bool isPaginationEnable { get; set; }
 
-        public GenericRepository(StoreContext dbContext , IMapper mapper)
+        public GenericRepository(StoreContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -65,6 +65,6 @@ namespace Amazon_EF.Repository
         {
             return await GetSpecQuery(Spec).CountAsync();
         }
-      
+
     }
 }

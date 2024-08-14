@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Amazon_Core.Specifications;
 using Microsoft.EntityFrameworkCore;
-namespace Amazon_EF.Repository
+namespace Amazon_EF.SqlRepository.Repository
 {
     public static class SpecificationsEvaluator<T> where T : BaseEntity
     {
-        public static IQueryable<T> getQuery(IQueryable<T> inputQuery , ISpecifictations<T> specifictations)
+        public static IQueryable<T> getQuery(IQueryable<T> inputQuery, ISpecifictations<T> specifictations)
         {
             var query = inputQuery; //_dbContext.Set<T>
             if (specifictations.Criteria != null)  //p => p== ??
@@ -20,13 +20,13 @@ namespace Amazon_EF.Repository
             if (specifictations.orderBy != null) // p => p.Price
                 query = query.OrderBy(specifictations.orderBy);
 
-           else if (specifictations.orderByDes != null) //p => p.Price
+            else if (specifictations.orderByDes != null) //p => p.Price
                 query = query.OrderByDescending(specifictations.orderByDes);
 
             if (specifictations.isPaginationEnable == true)
                 query = query.Skip(specifictations.Skipe).Take(specifictations.Take);
 
-              query = specifictations.Include.Aggregate(query, (CurrentQuery, QueryExpression) => CurrentQuery.Include(QueryExpression));
+            query = specifictations.Include.Aggregate(query, (CurrentQuery, QueryExpression) => CurrentQuery.Include(QueryExpression));
             //CurrentQuery ==> query 
             //QueryExpression ==> (p => p== ??)
             return query;

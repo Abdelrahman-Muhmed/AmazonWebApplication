@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Amazon_Core.Model;
 
-namespace Amazon_EF.Data.Config
+namespace Amazon_EF.SqlRepository.Data.Config
 {
     internal class ProductConfigurations : IEntityTypeConfiguration<Product>
     {
@@ -20,7 +20,7 @@ namespace Amazon_EF.Data.Config
                 .IsRequired();
 
             builder.Property(p => p.PictureUrl)
-                .IsRequired(); 
+                .IsRequired();
 
             builder.Property(p => p.Price)
                 .HasColumnType("decimal(18 , 2)");
