@@ -1,5 +1,5 @@
 ﻿using Amazon_Api.Error;
-using Amazon_EF.SqlRepository.Data;
+using Amazon_EF.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

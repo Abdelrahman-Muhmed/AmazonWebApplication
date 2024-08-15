@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.SqlRepository.Data
+namespace Amazon_EF.Data
 {
     public static class DataSeeding
     {

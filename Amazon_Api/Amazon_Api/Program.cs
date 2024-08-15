@@ -4,10 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Amazon_Core.IRepository;
 using Amazon_Core.Model;
 using Amazon_Api.Helpers;
-using Amazon_EF.SqlRepository.Data;
 using Amazon_EF.SqlRepository.Repository;
 using StackExchange.Redis;
-
+using Amazon_EF.RedisRepository;
+using Amazon_EF.Data;
+using Amazon_EF.IdentityData;
+using Microsoft.AspNetCore.Identity;
+using Amazon_Core.Model.IdentityModel;
+using Amazon_EF.IdentityData.DataSeedingFile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +31,21 @@ builder.Services.AddDbContext<StoreContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//Injection for Identity 
+builder.Services.AddDbContext<ApplicationIdentityContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+});
+
 #endregion
 
 #region AlloW Depdancy Injection For Class 
 
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+//For connect with 
 builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
 {
     var connection = builder.Configuration.GetConnectionString("RedisConnection");
@@ -41,7 +54,14 @@ builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
 
 );
 
+//For Basket Repository (Memory DataBase)
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//System.InvalidOperationException: 'No service for type Error From var ApplicationUserSeedingData = servies.GetRequiredService<UserManager<ApplictionUser>>();
+//    'Microsoft.AspNetCore.Identity.UserManager`1[Amazon_Core.Model.IdentityModel.ApplictionUser]' has been registered.'
+builder.Services.AddIdentity<ApplictionUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationIdentityContext>();
 
 #endregion
 
@@ -64,8 +84,11 @@ using var scope = app.Services.CreateScope();
 
 //try
 //{
+//Aske cli to Make Object From Class 
 var servies = scope.ServiceProvider;
 var dbContext = servies.GetRequiredService<StoreContext>();
+var IdentitydbContext = servies.GetRequiredService<ApplicationIdentityContext>();
+var ApplicationUserSeedingData = servies.GetRequiredService<UserManager<ApplictionUser>>();
 //}
 
 //finally
@@ -79,9 +102,13 @@ try
 {
     //Migration Data 
     await dbContext.Database.MigrateAsync();
-
+    await IdentitydbContext.Database.MigrateAsync();
     //Seeding Data 
     await DataSeeding.seedAsync(dbContext);
+
+    //Seeding Data To Make Admin User 
+    await ApplicationDataSeeding.SeedData(ApplicationUserSeedingData);
+
  }
 catch (Exception ex)
 {

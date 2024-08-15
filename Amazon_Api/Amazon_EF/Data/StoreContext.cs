@@ -1,5 +1,5 @@
 ﻿using Amazon_Core.Model;
-using Amazon_EF.SqlRepository.Data.Config;
+using Amazon_EF.Data.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.SqlRepository.Data
+namespace Amazon_EF.Data
 {
     public class StoreContext : DbContext
     {

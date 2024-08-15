@@ -10,9 +10,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.SqlRepository.Repository
+namespace Amazon_EF.RedisRepository
 {
-    
+
     public class BasketRepository : IBasketRepository
     {
         private readonly IConnectionMultiplexer _Basketrepository;
@@ -30,7 +30,7 @@ namespace Amazon_EF.SqlRepository.Repository
         public async Task<CustomerBasket?> CreateOrUpdateAsync(CustomerBasket basket)
         {
             var convertFromObjectToJson = JsonConvert.SerializeObject(basket);
-            var createOrUpdateBasketItem = await _Basketrepository.GetDatabase().StringSetAsync(basket.Id , convertFromObjectToJson , TimeSpan.FromDays(10));
+            var createOrUpdateBasketItem = await _Basketrepository.GetDatabase().StringSetAsync(basket.Id, convertFromObjectToJson, TimeSpan.FromDays(10));
             if (!createOrUpdateBasketItem)
                 return null;
             return await GetAsync(basket.Id);
@@ -43,6 +43,6 @@ namespace Amazon_EF.SqlRepository.Repository
             return BasketItemDelete;
         }
 
-      
+
     }
 }

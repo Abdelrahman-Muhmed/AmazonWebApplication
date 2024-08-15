@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Amazon_Core.Model;
 
-namespace Amazon_EF.SqlRepository.Data.Config
+namespace Amazon_EF.Data.Config
 {
     internal class ProductConfigurations : IEntityTypeConfiguration<Product>
     {
