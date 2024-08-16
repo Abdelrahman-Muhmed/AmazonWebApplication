@@ -1,5 +1,4 @@
 
-
 using Microsoft.EntityFrameworkCore;
 using Amazon_Core.IRepository;
 using Amazon_Core.Model;
@@ -23,7 +22,6 @@ builder.Services.AddEndpointsApiExplorer();
 //For Swaggere UI 
 builder.Services.AddSwaggerGen(); 
 #endregion
-
 
 #region Connection      
 //Injection For DataBase 
@@ -120,7 +118,6 @@ catch (Exception ex)
 }
 
 #endregion
-
 
 
 // Configure the HTTP request pipeline.
