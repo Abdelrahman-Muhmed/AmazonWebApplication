@@ -11,7 +11,8 @@ using Amazon_EF.IdentityData;
 using Microsoft.AspNetCore.Identity;
 using Amazon_Core.Model.IdentityModel;
 using Amazon_EF.IdentityData.DataSeedingFile;
-
+using Amazon_Core.Service;
+using Amazon_Service.ServiceRepo;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Config Services          
@@ -61,6 +62,10 @@ builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddIdentity<ApplictionUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationIdentityContext>();
 
+
+
+//For IAuthService 
+builder.Services.AddScoped(typeof(IAuthServic) , typeof(AuthService));
 #endregion
 
 #region Auto Mapping 

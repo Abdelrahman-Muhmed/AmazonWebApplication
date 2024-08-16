@@ -1,6 +1,7 @@
 ﻿using Amazon_Api.Dtos.AccountModel;
 using Amazon_Api.Error;
 using Amazon_Core.Model.IdentityModel;
+using Amazon_Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace Amazon_Api.Controllers
     {
         private readonly UserManager<ApplictionUser> _userManager;
         private readonly SignInManager<ApplictionUser> _signInManager;
-        public AccountController(UserManager<ApplictionUser> userManager , SignInManager<ApplictionUser> signInManager)
+        private readonly IAuthServic _authServic;
+        public AccountController(UserManager<ApplictionUser> userManager , SignInManager<ApplictionUser> signInManager , IAuthServic authServic)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _authServic = authServic;
         }
         //Loin 
         [HttpPost("userLogin")]
@@ -33,7 +36,7 @@ namespace Amazon_Api.Controllers
             {
                 Email = user.Email,
                 Name = user.Name,
-                Token = "Null Now"
+                Token = await _authServic.CreateTokenAsync(user , _userManager)
             });
         }
 
@@ -57,7 +60,7 @@ namespace Amazon_Api.Controllers
             {
                 Name = register.Name,
                 Email = register.Email,
-                Token = "Null Now"
+                Token = await _authServic.CreateTokenAsync(user, _userManager)
             });
         }
 
