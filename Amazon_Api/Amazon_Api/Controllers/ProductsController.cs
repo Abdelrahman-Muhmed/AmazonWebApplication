@@ -6,6 +6,7 @@ using Amazon_Core.Specifications.ProductSpec;
 using AutoMapper;
 using Amazon_Api.Dtos;
 using Amazon_Api.Helpers;
+using Microsoft.AspNetCore.Authorization;
 namespace Amazon_Api.Controllers
 {
    
@@ -26,6 +27,10 @@ namespace Amazon_Api.Controllers
             _category = category;
         }
 
+        //(AuthenticationSchemes = "Bearer") He give Invalid Opearations Error 
+        //And if i dont right (AuthenticationSchemes = "Bearer")] He give me Not Found Becuse He can't knwo the Schema 
+        //(AuthenticationSchemes = "Bearer") We Remove this Because its coming From Chalnge Schema 
+        [Authorize]
         [HttpGet]
         //Error 415 is becuse the parameter coming from empty body when using propert parameter from object 
         public async Task<ActionResult<Pagination<ProductRetuenDto>>> GetAllAsync([FromQuery] ProductSpecParameter specParameter)

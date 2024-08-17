@@ -13,6 +13,12 @@ using Amazon_Core.Model.IdentityModel;
 using Amazon_EF.IdentityData.DataSeedingFile;
 using Amazon_Core.Service;
 using Amazon_Service.ServiceRepo;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Config Services          
@@ -36,6 +42,7 @@ builder.Services.AddDbContext<ApplicationIdentityContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
 });
+
 
 #endregion
 
@@ -63,6 +70,34 @@ builder.Services.AddIdentity<ApplictionUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationIdentityContext>();
 
 
+
+//Injection For Add Autntication
+//Without this AddJwtBearer("Bearer") he give use the Invalid Opearations Error So I have know hime Whatg the Kind Of Schema 
+//Now i will add the valdiate for Claim What Come With Schema 
+//"Bearer" == JwtBearerDefaults.AuthenticationScheme
+
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;       // For make this The Default in Any Endpoint Work With Authrization 
+}
+
+
+)
+    .AddJwtBearer(option =>
+       option.TokenValidationParameters = new TokenValidationParameters()
+       {
+           ValidateAudience = true,
+           ValidAudience = builder.Configuration["JWT:audience"],
+           ValidateIssuer = true,
+           ValidIssuer = builder.Configuration["JWT:issure"],
+           ValidateIssuerSigningKey = true,
+           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:AuthKey"] ?? string.Empty)),
+           ValidateLifetime = true,
+           ClockSkew = TimeSpan.Zero
+       } //The defualt handler for Bearer Schema 
+
+    );
 
 //For IAuthService 
 builder.Services.AddScoped(typeof(IAuthServic) , typeof(AuthService));
