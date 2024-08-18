@@ -18,7 +18,7 @@ namespace Amazon_Api.Helpers
                 //.ForMember(p => p.PictureUrl, o => o.MapFrom(s => $"{https://localhost:7015}/{s.PictureUrl}"))
                 .ForMember(p => p.PictureUrl, o => o.MapFrom<PictureUrlResolver>());
 
-            CreateMap<Adress, AdressDto>();
+            CreateMap<Adress, AdressDto>().ReverseMap();
         }
     }
 }

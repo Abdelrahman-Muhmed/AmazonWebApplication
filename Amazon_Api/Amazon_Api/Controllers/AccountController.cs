@@ -99,10 +99,35 @@ namespace Amazon_Api.Controllers
             var user = await _userManager.findAdressByEmailAsync(User);
 
             return Ok( _mapper.Map<AdressDto>(user.userAdress));
+        }
 
+        //Update Adress 
 
+        [Authorize]
+        [HttpPut("updateAdress")]
+        public async Task<ActionResult<Adress>> UpdateAdress(AdressDto adressDto)
+        {
 
+            var user = await _userManager.findAdressByEmailAsync(User);
+            if (user == null || user.userAdress == null)
+            {
+                return NotFound("User or address not found.");
+            }
 
+            var userAdress = _mapper.Map(adressDto, user.userAdress);
+
+            //Make Id Equal The Id What inside The Adress Becuse Don't make Update  
+            userAdress.Id = user.userAdress.Id;
+            user.userAdress = userAdress;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Ok(user.userAdress);
         }
 
     }
