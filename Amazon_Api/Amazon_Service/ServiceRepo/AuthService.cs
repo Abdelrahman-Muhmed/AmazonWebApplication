@@ -53,7 +53,7 @@ namespace Amazon_Service.ServiceRepo
 
             var token = new JwtSecurityToken(
                 
-                audience : _configuration["JWT:asdasffdasffdsfdsadsac"],
+                audience : _configuration["JWT:audience"],
                 issuer : _configuration["JWT:issure"],
                 expires: DateTime.Now.AddDays(double.Parse( _configuration["JWT:TokenEx"]?? "0")),
                 claims: authCliam,

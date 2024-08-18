@@ -25,7 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
+
 //For Swaggere UI 
 builder.Services.AddSwaggerGen(); 
 #endregion
@@ -69,12 +69,14 @@ builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddIdentity<ApplictionUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationIdentityContext>();
 
-
+//For IAuthService 
+builder.Services.AddScoped(typeof(IAuthServic), typeof(AuthService));
 
 //Injection For Add Autntication
 //Without this AddJwtBearer("Bearer") he give use the Invalid Opearations Error So I have know hime Whatg the Kind Of Schema 
 //Now i will add the valdiate for Claim What Come With Schema 
 //"Bearer" == JwtBearerDefaults.AuthenticationScheme
+
 
 builder.Services.AddAuthentication(option =>
 {
@@ -99,8 +101,7 @@ builder.Services.AddAuthentication(option =>
 
     );
 
-//For IAuthService 
-builder.Services.AddScoped(typeof(IAuthServic) , typeof(AuthService));
+
 #endregion
 
 #region Auto Mapping 
@@ -163,17 +164,18 @@ catch (Exception ex)
 // Configure the HTTP request pipeline.
 #region Configure Kestral MeddleWare 
 
-#region Handle Not Found End Point Error  
-//app.UseStatusCodePagesWithRedirects("/ErrorEndPoint/{0}");
-app.UseStatusCodePagesWithReExecute("/ErrorEndPoint/{0}"); // It's Not Make Redirct For Page 
 
-#endregion
 // Add Static For Picture 
 app.UseStaticFiles();
+#region Handle Not Found End Point Error  
+//app.UseStatusCodePagesWithRedirects("/ErrorEndPoint/{0}");
+/*app.UseStatusCodePagesWithReExecute("/ErrorEndPoint/{0}");*/ // It's Not Make Redirct For Page 
 
+#endregion
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

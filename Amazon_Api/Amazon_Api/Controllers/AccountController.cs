@@ -2,9 +2,11 @@
 using Amazon_Api.Error;
 using Amazon_Core.Model.IdentityModel;
 using Amazon_Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Amazon_Api.Controllers
 {
@@ -63,6 +65,32 @@ namespace Amazon_Api.Controllers
                 Token = await _authServic.CreateTokenAsync(user, _userManager)
             });
         }
+
+
+        //For Get Current User By Email 
+        [Authorize]
+        [HttpGet("getUser")]
+        
+        public async Task<ActionResult<UserDto>> GetUserName()
+        {
+
+            var email = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
+            var user = await _userManager.FindByEmailAsync(email) ;
+
+            return Ok(new UserDto()
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Token = await _authServic.CreateTokenAsync(user , _userManager)
+
+
+
+            });
+
+
+        }
+
+
 
     }
 }
