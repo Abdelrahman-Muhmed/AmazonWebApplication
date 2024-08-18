@@ -24,8 +24,16 @@ var builder = WebApplication.CreateBuilder(args);
 #region Config Services          
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    //For Solve System.Text.Json.JsonException: A possible object cycle was detected. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
+    //Show me when i getAdress 
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.MaxDepth = 64; // Optional: increase max depth if needed
+    });
 
+builder.Services.AddEndpointsApiExplorer();
 //For Swaggere UI 
 builder.Services.AddSwaggerGen(); 
 #endregion

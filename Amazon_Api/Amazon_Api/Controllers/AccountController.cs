@@ -1,5 +1,6 @@
 ﻿using Amazon_Api.Dtos.AccountModel;
 using Amazon_Api.Error;
+using Amazon_Api.Extensions;
 using Amazon_Core.Model.IdentityModel;
 using Amazon_Core.Service;
 using Microsoft.AspNetCore.Authorization;
@@ -73,7 +74,7 @@ namespace Amazon_Api.Controllers
         
         public async Task<ActionResult<UserDto>> GetUserName()
         {
-
+            //The User Here Coming From ControllerBase 
             var email = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
             var user = await _userManager.FindByEmailAsync(email) ;
 
@@ -82,15 +83,24 @@ namespace Amazon_Api.Controllers
                 Name = user.Name,
                 Email = user.Email,
                 Token = await _authServic.CreateTokenAsync(user , _userManager)
-
-
-
             });
-
-
         }
 
 
+        //Get Adress For Current User 
+        [Authorize]
+        [HttpGet("getAdress")]
+        public async Task<ActionResult<Adress>> GetAdress()
+        {
+
+            var user = await _userManager.findAdressByEmailAsync(User);
+
+            return Ok(user.userAdress);
+
+
+
+
+        }
 
     }
 }
