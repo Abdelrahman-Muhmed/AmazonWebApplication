@@ -3,6 +3,7 @@ using Amazon_Api.Error;
 using Amazon_Api.Extensions;
 using Amazon_Core.Model.IdentityModel;
 using Amazon_Core.Service;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -16,11 +17,13 @@ namespace Amazon_Api.Controllers
         private readonly UserManager<ApplictionUser> _userManager;
         private readonly SignInManager<ApplictionUser> _signInManager;
         private readonly IAuthServic _authServic;
-        public AccountController(UserManager<ApplictionUser> userManager , SignInManager<ApplictionUser> signInManager , IAuthServic authServic)
+        private readonly IMapper _mapper;
+        public AccountController(UserManager<ApplictionUser> userManager , SignInManager<ApplictionUser> signInManager , IAuthServic authServic , IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _authServic = authServic;
+            _mapper = mapper;
         }
         //Loin 
         [HttpPost("userLogin")]
@@ -90,12 +93,12 @@ namespace Amazon_Api.Controllers
         //Get Adress For Current User 
         [Authorize]
         [HttpGet("getAdress")]
-        public async Task<ActionResult<Adress>> GetAdress()
+        public async Task<ActionResult<AdressDto>> GetAdress()
         {
 
             var user = await _userManager.findAdressByEmailAsync(User);
 
-            return Ok(user.userAdress);
+            return Ok( _mapper.Map<AdressDto>(user.userAdress));
 
 
 

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Amazon_Core.Model.IdentityModel
 {
@@ -17,6 +19,8 @@ namespace Amazon_Core.Model.IdentityModel
         //public int ApplicationUserId { get; set; } 
 
         public string? ApplicationUserId { get; set; }
+
+        /*[JsonIgnore]*/ // For Ignor Data but there are other way it's Create AdressDto
         public ApplictionUser ApplictionUser { get; set; } = null!;
 
     }

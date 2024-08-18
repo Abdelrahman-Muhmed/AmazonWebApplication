@@ -1,5 +1,7 @@
 ﻿using Amazon_Api.Dtos;
+using Amazon_Api.Dtos.AccountModel;
 using Amazon_Core.Model;
+using Amazon_Core.Model.IdentityModel;
 using AutoMapper;
 
 namespace Amazon_Api.Helpers
@@ -16,7 +18,7 @@ namespace Amazon_Api.Helpers
                 //.ForMember(p => p.PictureUrl, o => o.MapFrom(s => $"{https://localhost:7015}/{s.PictureUrl}"))
                 .ForMember(p => p.PictureUrl, o => o.MapFrom<PictureUrlResolver>());
 
-
+            CreateMap<Adress, AdressDto>();
         }
     }
 }
