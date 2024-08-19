@@ -4,16 +4,19 @@ using Amazon_EF.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Amazon_EF.Data.Migrations
+namespace Amazon_EF.OrderData.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240818193533_OrderModule")]
+    partial class OrderModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace Amazon_EF.Data.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("deliveryMethods");
+                    b.ToTable("DeliveryMethod");
                 });
 
             modelBuilder.Entity("Amazon_Core.Model.OrderModel.Order", b =>
@@ -83,7 +86,7 @@ namespace Amazon_EF.Data.Migrations
 
                     b.HasIndex("deliveryMethodId");
 
-                    b.ToTable("orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Amazon_Core.Model.OrderModel.orderItem", b =>
@@ -217,7 +220,7 @@ namespace Amazon_EF.Data.Migrations
 
                             b1.HasKey("Orderid");
 
-                            b1.ToTable("orders");
+                            b1.ToTable("Order");
 
                             b1.WithOwner()
                                 .HasForeignKey("Orderid");

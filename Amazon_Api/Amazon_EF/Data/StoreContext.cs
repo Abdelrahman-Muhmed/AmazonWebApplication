@@ -1,4 +1,5 @@
 ﻿using Amazon_Core.Model;
+using Amazon_Core.Model.OrderModel;
 using Amazon_EF.Data.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,6 +30,12 @@ namespace Amazon_EF.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductBrand> ProductBrand { get; set; }
         public DbSet<ProductCategory> ProductCategory { get; set; }
+
+        public DbSet<DeliveryMethod> deliveryMethods { get; set; }
+
+        public DbSet<Order> orders { get; set; }
+        public DbSet<orderItem> orderItem { get; set; }
+
 
 
     }

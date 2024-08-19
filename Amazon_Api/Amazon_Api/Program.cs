@@ -16,6 +16,7 @@ using Amazon_Service.ServiceRepo;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Amazon_EF.OrderData;
 
 
 
@@ -152,7 +153,7 @@ try
     await IdentitydbContext.Database.MigrateAsync();
     //Seeding Data 
     await DataSeeding.seedAsync(dbContext);
-
+    await OrderDataSeeding.seedAsync(dbContext);
     //Seeding Data To Make Admin User 
     await ApplicationDataSeeding.SeedData(ApplicationUserSeedingData);
 
