@@ -23,5 +23,15 @@ namespace Amazon_Core.IRepository
 
         Task<int> GetCountAsync(ISpecifictations<T> Spec);
 
+
+        void Add(T entity);
+
+        void Update(T entity);
+
+        void Delete(T entity);
+
+
+
+
     }
 }

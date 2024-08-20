@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Amazon_Core.Model.OrderModel
 {
-    public class orderItem : BaseEntity
+    public class OrderItem : BaseEntity
     {
-      
+        public OrderItem()
+        {
+            
+        }
+
+        public OrderItem(decimal priceP , int quantityP , productItemOreder productItemOrederP)
+        {
+            price = priceP;
+            quantity = quantityP;
+            productItemOreder = productItemOrederP;
+        }
         public decimal price { get; set; }
 
         public int quantity { get; set; }

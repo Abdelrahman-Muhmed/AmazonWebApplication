@@ -22,7 +22,7 @@ namespace Amazon_EF.OrderData
       
 
 
-            if (storeContext.deliveryMethods.Count() == 0)
+            if (storeContext.DeliveryMethods.Count() == 0)
             {
                 if (deDelivery?.Count() > 0)
                 {

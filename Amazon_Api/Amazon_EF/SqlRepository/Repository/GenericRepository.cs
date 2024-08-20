@@ -23,6 +23,10 @@ namespace Amazon_EF.SqlRepository.Repository
         public int? Skipe { get; set; }
         public bool isPaginationEnable { get; set; }
 
+        public GenericRepository(StoreContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public GenericRepository(StoreContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -66,5 +70,13 @@ namespace Amazon_EF.SqlRepository.Repository
             return await GetSpecQuery(Spec).CountAsync();
         }
 
+        public void Add(T entity)
+        => _dbContext.Set<T>().Add(entity);
+
+        public void Update(T entity)
+        => _dbContext.Set<T>().Update(entity);
+
+        public void Delete(T entity)
+        => _dbContext.Set<T>().Remove(entity);
     }
 }

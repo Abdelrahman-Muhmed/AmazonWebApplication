@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Amazon_EF.OrderData.Config
 {
-    internal class OrderItemConfigruations : IEntityTypeConfiguration<orderItem>
+    internal class OrderItemConfigruations : IEntityTypeConfiguration<OrderItem>
     {
-        public void Configure(EntityTypeBuilder<orderItem> builder)
+        public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
             //1- RelationShip between Order Table and shippingAdress prop 
             builder.OwnsOne(orderItem => orderItem.productItemOreder, ship => ship.WithOwner());

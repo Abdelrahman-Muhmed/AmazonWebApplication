@@ -10,6 +10,20 @@ namespace Amazon_Core.Model.OrderModel
 {
     public class Order : BaseEntity
     {
+        public Order()
+        {
+            
+        }
+
+        public Order(string ByerEmailP , Adress adressP , int deliveryMethodIdP , ICollection<OrderItem> itemsP , decimal subTotalP)
+        {
+            ByerEmail = ByerEmailP;
+            shippingAdress = adressP;
+            deliveryMethodId = deliveryMethodIdP;
+            orderItem = itemsP;
+            subTotal = subTotalP;
+        }
+
         public string ByerEmail { get; set; } = null!;
         public DateTimeOffset dateTime { get; set; } = DateTimeOffset.UtcNow;
 
@@ -20,8 +34,7 @@ namespace Amazon_Core.Model.OrderModel
         public int deliveryMethodId { get; set; } //Forign Key 
         public DeliveryMethod deliveryMethod { get; set; } = null!; //Nav Prop 
 
-        public ICollection<orderItem> orderItem { get; set; } = new HashSet<orderItem>();    //Nav Prop 
-
+        public ICollection<OrderItem> orderItem { get; set; } = new HashSet<OrderItem>();    //Nav Prop 
 
         public decimal subTotal { get; set; }
 
