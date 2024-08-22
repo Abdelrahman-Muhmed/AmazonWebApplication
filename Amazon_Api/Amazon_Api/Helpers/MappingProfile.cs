@@ -20,8 +20,21 @@ namespace Amazon_Api.Helpers
                 //.ForMember(p => p.PictureUrl, o => o.MapFrom(s => $"{https://localhost:7015}/{s.PictureUrl}"))
                 .ForMember(p => p.PictureUrl, o => o.MapFrom<PictureUrlResolver>());
 
-            CreateMap<Adress,AdressDto>().ReverseMap();
-            CreateMap<AdressModel, AdressDto>().ReverseMap();
+            CreateMap<AdressDto , Adress>().ReverseMap();
+            CreateMap<AdressDto ,AdressModel>().ReverseMap();
+
+
+            CreateMap<Order , OrderToReturnDto>()
+                .ForMember(e => e.DeliveryMethod, f => f.MapFrom(s => s.deliveryMethod.shortName))
+                .ForMember(e => e.cost, f => f.MapFrom(s => s.deliveryMethod.cost));
+
+            CreateMap<OrderItem, OrderItemToReturnDto>()
+                .ForMember(e => e.productId, f => f.MapFrom(s => s.productItemOreder.productId))
+                .ForMember(e => e.productName, f => f.MapFrom(s => s.productItemOreder.productName))
+                .ForMember(e => e.picturelUrl, f => f.MapFrom(s => s.productItemOreder.picturelUrl))
+                .ForMember(e => e.picturelUrl, f => f.MapFrom<OrderPicturalUrlResolver>());
+           
+            
 
 
         }

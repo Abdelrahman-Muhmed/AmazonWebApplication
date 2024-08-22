@@ -113,7 +113,10 @@ namespace Amazon_Service.ServiceRepo
 
         public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()
         {
-            throw new NotImplementedException();
+            var DeliveryMethod = _unitOfWork.Repository<DeliveryMethod>();
+            var getDeliveryMethod = DeliveryMethod.GetAllAsync();
+
+            return getDeliveryMethod;
         }
 
        
