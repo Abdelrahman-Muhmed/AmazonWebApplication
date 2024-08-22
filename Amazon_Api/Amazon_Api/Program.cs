@@ -67,6 +67,8 @@ builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
 builder.Services.AddScoped(typeof(IOrdersService), typeof(OrderesService));
 
+builder.Services.AddScoped(typeof(IProductService), typeof(ProductServic));
+
 
 //For connect with 
 builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
