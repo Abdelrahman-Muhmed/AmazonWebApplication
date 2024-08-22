@@ -10,10 +10,10 @@ namespace Amazon_Core.Specifications
 {
     public class BaseSpecification<T> : ISpecifictations<T> where T : BaseEntity
     {
-        public Expression<Func<T, bool>> Criteria { get; set; } = null;
+        public Expression<Func<T, bool>> Criteria { get; set; } = null!;
         public List<Expression<Func<T, object>>> Include { get; set; } = new List<Expression<Func<T, object>>>();
-        public Expression<Func<T, object>> orderBy { get; set; } = null;
-        public Expression<Func<T, object>> orderByDes { get; set; } = null;
+        public Expression<Func<T, object>> orderBy { get; set; } = null!;
+        public Expression<Func<T, object>> orderByDes { get; set; } = null!;
 
         public int Take { get; set; }
         public int Skipe { get; set; }
@@ -21,7 +21,7 @@ namespace Amazon_Core.Specifications
 
         public BaseSpecification()
         {
-            
+           // Criteria = Null;
         }
         public BaseSpecification(Expression<Func<T, bool>> CriteriaExpression)
         {

@@ -2,6 +2,7 @@
 using Amazon_Core.Model;
 using Amazon_Core.Model.OrderModel;
 using Amazon_Core.Service;
+using Amazon_Core.Specifications.OrderSpec;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System;
@@ -95,12 +96,19 @@ namespace Amazon_Service.ServiceRepo
         }
         public Task<IReadOnlyList<Order>> GetOrderesAsync(string byerEmail)
         {
-            throw new NotImplementedException();
+           var order = _unitOfWork.Repository<Order>();
+           var spec = new OrdersForUser(byerEmail);
+           var orederGenaric = order.GetAllAsyncWithSpec(spec);
+           return orederGenaric;
+
         }
 
         public Task<Order> GetOrdereAsync(string byerEmail, int orderId)
         {
-            throw new NotImplementedException();
+            var order = _unitOfWork.Repository<Order>();
+            var spec = new OrdersForUser(byerEmail , orderId);
+            var orederGenaric = order.GetAsyncWithSpec(spec);
+            return orederGenaric;
         }
 
         public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()

@@ -20,6 +20,7 @@ namespace Amazon_Api.Controllers
             _mapper = mapper;   
         }
 
+        //Create Order 
         [ProducesResponseType(typeof(Order),StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Order), StatusCodes.Status400BadRequest)]
         [Authorize]
@@ -34,6 +35,30 @@ namespace Amazon_Api.Controllers
 
             return Ok(createOrder);
 
+        }
+
+
+        //Get All Orders For Spesific User By Email
+        
+        [Authorize]
+        [HttpGet("getAll")]
+        public async Task<ActionResult<Order?>> GetOrdersForUser(string byerEmail)
+        {
+            var oreder = await _ordersService.GetOrderesAsync(byerEmail);
+            if(oreder == null)
+                return NotFound(new ApiResponse(404));
+            return Ok(oreder);
+        }
+
+        //Get All Orders For Spesific User and order By Email
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order?>> GetOrderForUser(int id, string byerEmail)
+        {
+            var oreder = await _ordersService.GetOrdereAsync(byerEmail , id);
+            if (oreder == null)
+                return NotFound(new ApiResponse(404));
+            return Ok(oreder);
         }
     }
 }

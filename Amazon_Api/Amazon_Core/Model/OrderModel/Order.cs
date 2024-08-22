@@ -39,7 +39,8 @@ namespace Amazon_Core.Model.OrderModel
         public decimal subTotal { get; set; }
 
         [NotMapped]
-        public decimal Total => subTotal + deliveryMethod.cost;
+        public decimal? Total => subTotal + (decimal?)deliveryMethod?.cost;
+
         //public decimal GetTotal() => subTotal + deliveryMethod.cost;
 
         public string paymentIntedId { get; set; } = string.Empty;
