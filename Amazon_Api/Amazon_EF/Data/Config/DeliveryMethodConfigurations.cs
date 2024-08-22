@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.OrderData.Config
+namespace Amazon_EF.Data.Config
 {
     internal class DeliveryMethodConfigurations : IEntityTypeConfiguration<DeliveryMethod>
     {

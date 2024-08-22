@@ -16,7 +16,7 @@ using Amazon_Service.ServiceRepo;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Amazon_EF.OrderData;
+using Amazon_Core.Model.OrderModel;
 
 
 
@@ -36,7 +36,9 @@ builder.Services.AddControllers()
 
 builder.Services.AddEndpointsApiExplorer();
 //For Swaggere UI 
-builder.Services.AddSwaggerGen(); 
+builder.Services.AddSwaggerGen();
+
+
 #endregion
 
 #region Connection      
@@ -58,7 +60,13 @@ builder.Services.AddDbContext<ApplicationIdentityContext>(options =>
 #region AlloW Depdancy Injection For Class 
 
 //builder.Services.AddScoped<IGenericRepository<Product>, GenericRepository<Product>>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+//For Unit Of Work So i dont need Make IGenericRepository 
+builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+builder.Services.AddScoped(typeof(IOrdersService), typeof(OrderesService));
+
 
 //For connect with 
 builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
@@ -85,8 +93,6 @@ builder.Services.AddScoped(typeof(IAuthServic), typeof(AuthService));
 //Without this AddJwtBearer("Bearer") he give use the Invalid Opearations Error So I have know hime Whatg the Kind Of Schema 
 //Now i will add the valdiate for Claim What Come With Schema 
 //"Bearer" == JwtBearerDefaults.AuthenticationScheme
-
-
 builder.Services.AddAuthentication(option =>
 {
     option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -110,16 +116,17 @@ builder.Services.AddAuthentication(option =>
 
     );
 
-
 #endregion
 
 #region Auto Mapping 
 //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile()));
 //builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Register AutoMapper and PictureUrlResolver
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSingleton<PictureUrlResolver>(); // ???????????????
+
 #endregion
 
 
@@ -192,6 +199,8 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amazon V1");
+
+  
 }); 
 #endregion
 

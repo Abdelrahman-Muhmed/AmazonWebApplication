@@ -8,9 +8,9 @@ namespace Amazon_Core.Model
 {
     public class Product : BaseEntity
     {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public string? PictureUrl { get; set; }
+        public string Name { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string PictureUrl { get; set; } = null!;
         public decimal Price { get; set; }
 
         public int BrandId { get; set; } // FK ProductBrand

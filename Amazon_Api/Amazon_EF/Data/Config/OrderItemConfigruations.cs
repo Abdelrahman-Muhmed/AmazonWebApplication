@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amazon_EF.OrderData.Config
+namespace Amazon_EF.Data.Config
 {
     internal class OrderItemConfigruations : IEntityTypeConfiguration<OrderItem>
     {
@@ -21,5 +21,5 @@ namespace Amazon_EF.OrderData.Config
                 .HasColumnType("decimal(12,2)");
         }
     }
-    
+
 }

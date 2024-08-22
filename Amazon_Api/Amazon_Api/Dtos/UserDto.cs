@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Amazon_Api.Dtos.AccountModel
+namespace Amazon_Api.Dtos
 {
     public class UserDto
     {

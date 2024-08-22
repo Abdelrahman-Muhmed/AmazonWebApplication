@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Amazon_EF.OrderData.Migrations
+namespace Amazon_EF.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class OrderModule : Migration
+    public partial class EcommerceMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,32 @@ namespace Amazon_EF.OrderData.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeliveryMethod", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductBrand",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductBrand", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductCategory",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategory", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +83,37 @@ namespace Amazon_EF.OrderData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "orderItem",
+                name: "Product",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BrandId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Product_ProductBrand_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "ProductBrand",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Product_ProductCategory_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "ProductCategory",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItem",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -67,19 +123,19 @@ namespace Amazon_EF.OrderData.Migrations
                     productItemOreder_productId = table.Column<int>(type: "int", nullable: false),
                     productItemOreder_productName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     productItemOreder_picturelUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    productItemOreder_orderid = table.Column<int>(type: "int", nullable: false),
+                    productItemOreder_orderid = table.Column<int>(type: "int", nullable: true),
                     Orderid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_orderItem", x => x.id);
+                    table.PrimaryKey("PK_OrderItem", x => x.id);
                     table.ForeignKey(
-                        name: "FK_orderItem_Order_Orderid",
+                        name: "FK_OrderItem_Order_Orderid",
                         column: x => x.Orderid,
                         principalTable: "Order",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_orderItem_Order_productItemOreder_orderid",
+                        name: "FK_OrderItem_Order_productItemOreder_orderid",
                         column: x => x.productItemOreder_orderid,
                         principalTable: "Order",
                         principalColumn: "id",
@@ -92,24 +148,43 @@ namespace Amazon_EF.OrderData.Migrations
                 column: "deliveryMethodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orderItem_Orderid",
-                table: "orderItem",
+                name: "IX_OrderItem_Orderid",
+                table: "OrderItem",
                 column: "Orderid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orderItem_productItemOreder_orderid",
-                table: "orderItem",
+                name: "IX_OrderItem_productItemOreder_orderid",
+                table: "OrderItem",
                 column: "productItemOreder_orderid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_BrandId",
+                table: "Product",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_CategoryId",
+                table: "Product",
+                column: "CategoryId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "orderItem");
+                name: "OrderItem");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Order");
+
+            migrationBuilder.DropTable(
+                name: "ProductBrand");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategory");
 
             migrationBuilder.DropTable(
                 name: "DeliveryMethod");

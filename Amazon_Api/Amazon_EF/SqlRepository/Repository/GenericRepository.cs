@@ -16,21 +16,18 @@ namespace Amazon_EF.SqlRepository.Repository
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly StoreContext _dbContext;
-        private readonly IMapper _mapper;
+       
 
         //Pagination Implemnt(Automatic Prop)
         public int? Take { get; set; }
         public int? Skipe { get; set; }
         public bool isPaginationEnable { get; set; }
 
+        
         public GenericRepository(StoreContext dbContext)
         {
             _dbContext = dbContext;
-        }
-        public GenericRepository(StoreContext dbContext, IMapper mapper)
-        {
-            _dbContext = dbContext;
-            _mapper = mapper;
+          
         }
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {

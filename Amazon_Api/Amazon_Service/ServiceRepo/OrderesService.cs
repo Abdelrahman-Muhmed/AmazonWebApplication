@@ -2,35 +2,43 @@
 using Amazon_Core.Model;
 using Amazon_Core.Model.OrderModel;
 using Amazon_Core.Service;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Amazon_Service.ServiceRepo
 {
     public class OrderesService : IOrdersService
     {
         private readonly IBasketRepository _basketRepository;
-        private readonly IGenericRepository<Product> _dbContextProduct;
-        private readonly IGenericRepository<DeliveryMethod> _dbContextDelivery;
-        private readonly IGenericRepository<Order> _dbContextOrder;
+        //private readonly IGenericRepository<Product> _dbContextProduct;
+        //private readonly IGenericRepository<DeliveryMethod> _dbContextDelivery;
+        //private readonly IGenericRepository<Order> _dbContextOrder; 
 
+        //Replace This IGenericRepository 
+        private readonly IUnitOfWork _unitOfWork;
 
+        public OrderesService(
+            IBasketRepository basketRepository,
+            //IGenericRepository<Product> dbContextProduct, 
+            //IGenericRepository<DeliveryMethod> dbContextDelivery,
+            //IGenericRepository<Order> dbContextOrder,
+            IUnitOfWork unitOfWork
 
-
-        public OrderesService(IBasketRepository basketRepository ,
-            IGenericRepository<Product> dbContextProduct , 
-            IGenericRepository<DeliveryMethod> dbContextDelivery,
-            IGenericRepository<Order> dbContextOrder)
+            )
         {
             _basketRepository = basketRepository;
-            _dbContextProduct = dbContextProduct;
-            _dbContextDelivery = dbContextDelivery;
-            _dbContextOrder = dbContextOrder;
+            //_dbContextProduct = dbContextProduct;
+            //_dbContextDelivery = dbContextDelivery;
+            //_dbContextOrder = dbContextOrder;
+            _unitOfWork = unitOfWork;
         }
-        public async Task<Order> CreatOrderAsync(string byerEmail, string basketId, int deliveryMethodId, Adress adress)
+        public async Task<Order> CreatOrderAsync(string byerEmail, string basketId, int deliveryMethodId, AdressModel adress)
         {
             //1- Get Basket From Baskets Repo
             var basket = await _basketRepository.GetAsync(basketId);
@@ -42,9 +50,11 @@ namespace Amazon_Service.ServiceRepo
             {
                 foreach(var item in basket.basketItem)
                 {
-                    var product = await _dbContextProduct.GetAsync(item.Id);
+                    var product = await _unitOfWork.Repository<Product>().GetAsync(item.Id);
+                    //var product = await _dbContextProduct.GetAsync(item.Id);
 
-                    var productItemOreder = new productItemOreder(product.id , product.Name , product.PictureUrl);
+
+                    var productItemOreder = new productItemOreder(item.Id, product.Name , product.PictureUrl);
 
                     var orderItem = new OrderItem(product.Price , item.Quantity , productItemOreder);
 
@@ -57,7 +67,9 @@ namespace Amazon_Service.ServiceRepo
             var subTotal = listOrderItem.Sum(item => item.price *  item.quantity);
 
             //4- Get Delivery Method From DeliveryMethods Repo
-            var DeliveryMethode = _dbContextDelivery.GetAsync(deliveryMethodId);
+            var DeliveryMethode = await _unitOfWork.Repository<DeliveryMethod>().GetAsync(deliveryMethodId);
+            //var DeliveryMethode = _dbContextDelivery.GetAsync(deliveryMethodId);
+
 
 
             //5- Create Order
@@ -70,14 +82,18 @@ namespace Amazon_Service.ServiceRepo
                 );
 
 
-            _dbContextOrder.Add(order);
+            _unitOfWork.Repository<Order>().Add(order);
+            //_dbContextOrder.Add(order);
 
+        
             //6- Now i have SaveChange in database So i will Use UnitOfWork 
+
+
+             await _unitOfWork.CompleteAsync();
             return order;
 
         }
-
-        public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()
+        public Task<IReadOnlyList<Order>> GetOrderesAsync(string byerEmail)
         {
             throw new NotImplementedException();
         }
@@ -87,9 +103,11 @@ namespace Amazon_Service.ServiceRepo
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<Order>> GetOrderesAsync(string byerEmail)
+        public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync()
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

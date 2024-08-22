@@ -10,7 +10,7 @@ namespace Amazon_Core.Service
 {
     public interface IOrdersService
     {
-        Task<Order> CreatOrderAsync (string byerEmail , string basketId , int deliveryMethod , Adress adress);
+        Task<Order> CreatOrderAsync (string byerEmail , string basketId , int deliveryMethod , AdressModel adress);
 
         Task<IReadOnlyList<Order>> GetOrderesAsync (string byerEmail);
 

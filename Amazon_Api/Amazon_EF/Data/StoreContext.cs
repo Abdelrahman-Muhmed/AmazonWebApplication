@@ -31,7 +31,7 @@ namespace Amazon_EF.Data
         public DbSet<ProductBrand> ProductBrand { get; set; }
         public DbSet<ProductCategory> ProductCategory { get; set; }
 
-        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethod { get; set; }
 
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderItem> OrderItem { get; set; }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Amazon_Core.Model.OrderModel.orderStatus;
 
-namespace Amazon_EF.OrderData.Config
+namespace Amazon_EF.Data.Config
 {
     internal class OrderConfigurations : IEntityTypeConfiguration<Order>
     {
@@ -23,7 +23,7 @@ namespace Amazon_EF.OrderData.Config
             builder.Property(order => order.orderStatus)
                 .HasConversion(
                 (onStatus) => onStatus.ToString(),
-                (onStatus) => (OrderStatus) Enum.Parse(typeof(OrderStatus) , onStatus)
+                (onStatus) => (OrderStatus)Enum.Parse(typeof(OrderStatus), onStatus)
 
                 );
 

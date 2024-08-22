@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Amazon_EF.Data
+namespace Amazon_EF.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240820035644_EditeDBSetName")]
-    partial class EditeDBSetName
+    [Migration("20240821160304_EcommerceMigration")]
+    partial class EcommerceMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace Amazon_EF.Data
 
                     b.HasKey("id");
 
-                    b.ToTable("DeliveryMethods");
+                    b.ToTable("DeliveryMethod");
                 });
 
             modelBuilder.Entity("Amazon_Core.Model.OrderModel.Order", b =>
@@ -89,7 +89,7 @@ namespace Amazon_EF.Data
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("Amazon_Core.Model.OrderModel.orderItem", b =>
+            modelBuilder.Entity("Amazon_Core.Model.OrderModel.OrderItem", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -193,7 +193,7 @@ namespace Amazon_EF.Data
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Amazon_Core.Model.OrderModel.Adress", "shippingAdress", b1 =>
+                    b.OwnsOne("Amazon_Core.Model.OrderModel.AdressModel", "shippingAdress", b1 =>
                         {
                             b1.Property<int>("Orderid")
                                 .HasColumnType("int");
@@ -232,7 +232,7 @@ namespace Amazon_EF.Data
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Amazon_Core.Model.OrderModel.orderItem", b =>
+            modelBuilder.Entity("Amazon_Core.Model.OrderModel.OrderItem", b =>
                 {
                     b.HasOne("Amazon_Core.Model.OrderModel.Order", null)
                         .WithMany("orderItem")
@@ -240,7 +240,7 @@ namespace Amazon_EF.Data
 
                     b.OwnsOne("Amazon_Core.Model.OrderModel.productItemOreder", "productItemOreder", b1 =>
                         {
-                            b1.Property<int>("orderItemid")
+                            b1.Property<int>("OrderItemid")
                                 .HasColumnType("int");
 
                             b1.Property<int>("orderid")
@@ -257,14 +257,14 @@ namespace Amazon_EF.Data
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("orderItemid");
+                            b1.HasKey("OrderItemid");
 
                             b1.HasIndex("orderid");
 
                             b1.ToTable("OrderItem");
 
                             b1.WithOwner()
-                                .HasForeignKey("orderItemid");
+                                .HasForeignKey("OrderItemid");
 
                             b1.HasOne("Amazon_Core.Model.OrderModel.Order", "order")
                                 .WithMany()

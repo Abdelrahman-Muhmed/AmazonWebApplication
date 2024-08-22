@@ -15,7 +15,7 @@ namespace Amazon_Core.Model.OrderModel
             
         }
 
-        public Order(string ByerEmailP , Adress adressP , int deliveryMethodIdP , ICollection<OrderItem> itemsP , decimal subTotalP)
+        public Order(string ByerEmailP , AdressModel adressP , int deliveryMethodIdP , ICollection<OrderItem> itemsP , decimal subTotalP)
         {
             ByerEmail = ByerEmailP;
             shippingAdress = adressP;
@@ -29,7 +29,7 @@ namespace Amazon_Core.Model.OrderModel
 
         public OrderStatus orderStatus { get; set; } = OrderStatus.pending;
 
-        public Adress shippingAdress { get; set; } = null!;   //one to one between Order and Adress (shippingAdress)
+        public AdressModel shippingAdress { get; set; } = null!;   //one to one between Order and Adress (shippingAdress)
 
         public int deliveryMethodId { get; set; } //Forign Key 
         public DeliveryMethod deliveryMethod { get; set; } = null!; //Nav Prop 

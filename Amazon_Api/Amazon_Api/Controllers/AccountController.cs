@@ -1,4 +1,4 @@
-﻿using Amazon_Api.Dtos.AccountModel;
+﻿using Amazon_Api.Dtos;
 using Amazon_Api.Error;
 using Amazon_Api.Extensions;
 using Amazon_Core.Model.IdentityModel;
@@ -25,6 +25,7 @@ namespace Amazon_Api.Controllers
             _authServic = authServic;
             _mapper = mapper;
         }
+
         //Loin 
         [HttpPost("userLogin")]
         public async Task<ActionResult<UserDto>> login(loginDto loginDto)

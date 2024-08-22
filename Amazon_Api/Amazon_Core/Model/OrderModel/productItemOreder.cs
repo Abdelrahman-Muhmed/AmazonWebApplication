@@ -23,7 +23,8 @@ namespace Amazon_Core.Model.OrderModel
         public int productId { get; set; }
         public string productName { get; set; } = null!;
         public string picturelUrl { get; set; } = null!;
-        public Order order { get; set; } = null!;
+
+        //public Order order { get; set; } = null!;
 
     
     }
