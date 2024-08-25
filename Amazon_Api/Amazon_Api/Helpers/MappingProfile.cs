@@ -12,7 +12,7 @@ namespace Amazon_Api.Helpers
     {
         public MappingProfile()
         {
-            CreateMap<Product, ProductRetuenDto>()
+            CreateMap<Products, ProductRetuenDto>()
                 .ForMember(p => p.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
                 .ForMember(p => p.CategoryName, o => o.MapFrom(s => s.CategoryName.Name))
 

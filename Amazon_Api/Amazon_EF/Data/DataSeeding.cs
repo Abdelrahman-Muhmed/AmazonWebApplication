@@ -18,7 +18,7 @@ namespace Amazon_EF.Data
 
             var brandsData = JsonSerializer.Deserialize<List<ProductBrand>>(brands);
             var CategoryData = JsonSerializer.Deserialize<List<ProductCategory>>(Category);
-            var ProductData = JsonSerializer.Deserialize<List<Product>>(Product);
+            var ProductData = JsonSerializer.Deserialize<List<Products>>(Product);
 
 
             if (dbContext.ProductBrand.Count() == 0)
@@ -54,7 +54,7 @@ namespace Amazon_EF.Data
                 {
                     foreach (var product in ProductData)
                     {
-                        dbContext.Set<Product>().Add(product);
+                        dbContext.Set<Products>().Add(product);
 
 
                     }

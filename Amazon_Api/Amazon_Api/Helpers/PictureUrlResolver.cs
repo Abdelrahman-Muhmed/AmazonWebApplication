@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Amazon_Api.Helpers
 {
-    public class PictureUrlResolver : IValueResolver<Product, ProductRetuenDto, string>
+    public class PictureUrlResolver : IValueResolver<Products, ProductRetuenDto, string>
     {
         private readonly IConfiguration _configuration;
         public PictureUrlResolver(IConfiguration configuration)
@@ -14,7 +14,7 @@ namespace Amazon_Api.Helpers
             _configuration = configuration;
 
         }
-        public string Resolve(Product source, ProductRetuenDto destination, string destMember, ResolutionContext context)
+        public string Resolve(Products source, ProductRetuenDto destination, string destMember, ResolutionContext context)
         {
             if(!string.IsNullOrEmpty(source.PictureUrl)) 
                 return $"{_configuration["BaseUrl"]}/{source.PictureUrl}";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Amazon_Core.Specifications.ProductSpec
 {
-    public class ProductsWithFiltrationForCountSpec : BaseSpecification<Product>
+    public class ProductsWithFiltrationForCountSpec : BaseSpecification<Products>
     {
         public ProductsWithFiltrationForCountSpec(ProductSpecParameter specParameter)
 

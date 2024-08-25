@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Amazon_Core.Specifications.ProductSpec
 {
-    public class ProductWithPrandAndCategory : BaseSpecification<Product>
+    public class ProductWithPrandAndCategory : BaseSpecification<Products>
     {
         public ProductWithPrandAndCategory(ProductSpecParameter specParameter)
             : base(

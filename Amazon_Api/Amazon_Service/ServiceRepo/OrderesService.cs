@@ -5,6 +5,7 @@ using Amazon_Core.Service;
 using Amazon_Core.Specifications.OrderSpec;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,15 @@ namespace Amazon_Service.ServiceRepo
 
         //Replace This IGenericRepository 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IPaymentService _paymentService;
 
         public OrderesService(
             IBasketRepository basketRepository,
             //IGenericRepository<Product> dbContextProduct, 
             //IGenericRepository<DeliveryMethod> dbContextDelivery,
             //IGenericRepository<Order> dbContextOrder,
-            IUnitOfWork unitOfWork
+            IUnitOfWork unitOfWork,
+            IPaymentService paymentService
 
             )
         {
@@ -38,6 +41,7 @@ namespace Amazon_Service.ServiceRepo
             //_dbContextDelivery = dbContextDelivery;
             //_dbContextOrder = dbContextOrder;
             _unitOfWork = unitOfWork;
+            _paymentService = paymentService;
         }
         public async Task<Order> CreatOrderAsync(string byerEmail, string basketId, int deliveryMethodId, AdressModel adress)
         {
@@ -51,7 +55,7 @@ namespace Amazon_Service.ServiceRepo
             {
                 foreach(var item in basket.basketItem)
                 {
-                    var product = await _unitOfWork.Repository<Product>().GetAsync(item.Id);
+                    var product = await _unitOfWork.Repository<Products>().GetAsync(item.Id);
                     //var product = await _dbContextProduct.GetAsync(item.Id);
 
 
@@ -71,7 +75,16 @@ namespace Amazon_Service.ServiceRepo
             var DeliveryMethode = await _unitOfWork.Repository<DeliveryMethod>().GetAsync(deliveryMethodId);
             //var DeliveryMethode = _dbContextDelivery.GetAsync(deliveryMethodId);
 
+            var orderRepo = _unitOfWork.Repository<Order>();
+            //i Will make check if the order found in the same paymentIntent Or not 
+            var spec = new orderWithPaymentIntentSpec(basket?.PaymentId);
+            var checkOrderForPaymnet = await orderRepo.GetAsyncWithSpec(spec);
 
+            if (checkOrderForPaymnet != null)
+            {
+                orderRepo.Delete(checkOrderForPaymnet);
+                await _paymentService.CreateOrUpdatePaymentIntent(basketId);
+            }
 
             //5- Create Order
             var order = new Order(
@@ -79,16 +92,16 @@ namespace Amazon_Service.ServiceRepo
                 adressP: adress,
                 deliveryMethodIdP: deliveryMethodId,
                 itemsP: listOrderItem,
-                subTotalP: subTotal
+                subTotalP: subTotal,
+                paymentIntentP: basket?.PaymentId ?? ""
                 );
 
 
-            _unitOfWork.Repository<Order>().Add(order);
+             orderRepo.Add(order);
             //_dbContextOrder.Add(order);
 
         
             //6- Now i have SaveChange in database So i will Use UnitOfWork 
-
 
              await _unitOfWork.CompleteAsync();
             return order;

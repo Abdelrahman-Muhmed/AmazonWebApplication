@@ -18,10 +18,10 @@ namespace Amazon_Service.ServiceRepo
         {
             _unitOfWork = unitOfWork;
         }
-        public Task<IReadOnlyList<Product>> GetAllProductAsync(ProductSpecParameter specParameter)
+        public Task<IReadOnlyList<Products>> GetAllProductAsync(ProductSpecParameter specParameter)
         {
             var ProductsBySpec = new ProductWithPrandAndCategory(specParameter);
-            var products = _unitOfWork.Repository<Product>().GetAllAsyncWithSpec(ProductsBySpec);
+            var products = _unitOfWork.Repository<Products>().GetAllAsyncWithSpec(ProductsBySpec);
 
             return products;
             
@@ -30,16 +30,16 @@ namespace Amazon_Service.ServiceRepo
         public Task<int> GetCountAsync(ProductSpecParameter specParameter)
         {
             var coundData = new ProductsWithFiltrationForCountSpec(specParameter);
-            var count = _unitOfWork.Repository<Product>().GetCountAsync(coundData);
+            var count = _unitOfWork.Repository<Products>().GetCountAsync(coundData);
 
             return count;
 
         }
 
-        public Task<Product> GetProductAsync(int id)
+        public Task<Products> GetProductAsync(int id)
         {
             var ProductsBySpec = new ProductWithPrandAndCategory(id);
-            var product =  _unitOfWork.Repository<Product>().GetAsyncWithSpec(ProductsBySpec);
+            var product =  _unitOfWork.Repository<Products>().GetAsyncWithSpec(ProductsBySpec);
 
             return product;
         }

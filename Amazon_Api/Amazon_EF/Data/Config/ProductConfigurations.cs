@@ -9,9 +9,9 @@ using Amazon_Core.Model;
 
 namespace Amazon_EF.Data.Config
 {
-    internal class ProductConfigurations : IEntityTypeConfiguration<Product>
+    internal class ProductConfigurations : IEntityTypeConfiguration<Products>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Products> builder)
         {
             builder.Property(p => p.Name)
                 .IsRequired();

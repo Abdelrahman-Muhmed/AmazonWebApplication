@@ -722,6 +722,18 @@
           }
         }
       },
+      "Stripe.net/45.8.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "System.Configuration.ConfigurationManager": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Stripe.net.dll": {
+            "assemblyVersion": "45.8.0.0",
+            "fileVersion": "45.8.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.6.2": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -1030,7 +1042,8 @@
       "Amazon_Service/1.0.0": {
         "dependencies": {
           "Amazon_Core": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8"
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
+          "Stripe.net": "45.8.0"
         },
         "runtime": {
           "Amazon_Service.dll": {}
@@ -1400,6 +1413,13 @@
       "sha512": "sha512-MjAJ0ejH8zLhtuN5+Z+/I07NmPGdVuGEvE2+4xONQoFwgl+7vbQ/A6jlUgH9UkZb4s9Mu9QDyBq1TkRqQcOgTQ==",
       "path": "stackexchange.redis/2.8.0",
       "hashPath": "stackexchange.redis.2.8.0.nupkg.sha512"
+    },
+    "Stripe.net/45.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MX4tByNC9ElsYV/4Fbp8iQ3pFabBHMlN15kZqg2c2zbWIKhMjijVEQbm31BG27HD0aIMwk/RTA//NVcgK3I8kQ==",
+      "path": "stripe.net/45.8.0",
+      "hashPath": "stripe.net.45.8.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.6.2": {
       "type": "package",

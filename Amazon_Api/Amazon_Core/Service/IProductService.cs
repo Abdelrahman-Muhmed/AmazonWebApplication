@@ -10,8 +10,8 @@ namespace Amazon_Core.Service
 {
     public interface IProductService
     {
-        Task<IReadOnlyList<Product>> GetAllProductAsync(ProductSpecParameter specParameter);
-        Task<Product> GetProductAsync(int id);
+        Task<IReadOnlyList<Products>> GetAllProductAsync(ProductSpecParameter specParameter);
+        Task<Products> GetProductAsync(int id);
         Task<IReadOnlyList<ProductBrand>> GetProductBrandAsync();
         Task<IReadOnlyList<ProductCategory>> GetProductCategoryAsync();
 

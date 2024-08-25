@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Amazon_Core.Model
 {
-    public class Product : BaseEntity
+    public class Products : BaseEntity
     {
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;

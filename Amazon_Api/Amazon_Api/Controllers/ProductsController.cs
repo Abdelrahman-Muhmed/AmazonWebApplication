@@ -45,7 +45,7 @@ namespace Amazon_Api.Controllers
         {
             //Sorting Start By Path Parameter To ProductWithPrandAndCategory to make Functionalty 
             var getProducts = await _productService.GetAllProductAsync(specParameter);
-            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductRetuenDto>>(getProducts);
+            var data = _mapper.Map<IReadOnlyList<Products>, IReadOnlyList<ProductRetuenDto>>(getProducts);
             //I have here send ProductsBySpec but i dont nedd all this i just need critaria What return ==> Create New Class 
             var count = await _productService.GetCountAsync(specParameter);
             //I will return the Paginations contain List Of(T) From Data 
@@ -58,7 +58,7 @@ namespace Amazon_Api.Controllers
             var product = await _productService.GetProductAsync(id);
             if (product == null)
                 return NotFound();
-            var ProductMapp = _mapper.Map<Product, ProductRetuenDto>(product);
+            var ProductMapp = _mapper.Map<Products, ProductRetuenDto>(product);
             return Ok(ProductMapp);
 
         }

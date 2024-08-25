@@ -15,13 +15,14 @@ namespace Amazon_Core.Model.OrderModel
             
         }
 
-        public Order(string ByerEmailP , AdressModel adressP , int deliveryMethodIdP , ICollection<OrderItem> itemsP , decimal subTotalP)
+        public Order(string ByerEmailP , AdressModel adressP , int deliveryMethodIdP , ICollection<OrderItem> itemsP , decimal subTotalP, string paymentIntentP)
         {
             ByerEmail = ByerEmailP;
             shippingAdress = adressP;
             deliveryMethodId = deliveryMethodIdP;
             orderItem = itemsP;
             subTotal = subTotalP;
+            paymentIntedId = paymentIntentP;
         }
 
         public string ByerEmail { get; set; } = null!;
@@ -43,7 +44,7 @@ namespace Amazon_Core.Model.OrderModel
 
         //public decimal GetTotal() => subTotal + deliveryMethod.cost;
 
-        public string paymentIntedId { get; set; } = string.Empty;
+        public string paymentIntedId { get; set; }
 
 
     }

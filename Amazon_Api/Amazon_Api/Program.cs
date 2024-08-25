@@ -69,6 +69,7 @@ builder.Services.AddScoped(typeof(IOrdersService), typeof(OrderesService));
 
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductServic));
 
+builder.Services.AddScoped(typeof(IPaymentService), typeof(PaymentService));
 
 //For connect with 
 builder.Services.AddScoped<IConnectionMultiplexer>((serviceProvider) =>
@@ -201,8 +202,9 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amazon V1");
+    c.InjectStylesheet("/SwaggerDark.css");
 
-  
+
 }); 
 #endregion
 
